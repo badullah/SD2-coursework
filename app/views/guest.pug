@@ -2,8 +2,8 @@ extends layout
 block content
     h1 Guest page for: #{guest.name}
     p Guest ID: #{guest.id} 
-    p List Name: #{guest.list.lName}
-    h2 List Items 
+    h2 List Name: #{guest.list.lName}
+    p List Items 
     table(border=1)
         for item in guest.items 
             tr  
