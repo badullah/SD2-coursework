@@ -41,14 +41,21 @@ class Guest {
      }
     // Gets the list item for this guest
     async getGuestItem() {
-        var sql = "SELECT * FROM list_item \
-        JOIN list on list.list_id = list_item.list_id \
-        WHERE list_item.guest_id = ?";
-       const results = await db.query(sql, [this.list.id]);
-       console.log(results);
-        for(var row of results) {
-            this.items.push(new Item(row.code, row.name));
-        }
+        // var sql = "SELECT * FROM list_item \
+        // JOIN list on list.list_id = list_item.list_id \
+        // WHERE list_item.guest_id = ?";
+        // if(typeof this.list !== List) {
+                var sql= "Select item.code as id, item.item_name from guest_list \
+                JOIN list_item ON guest_list.list_id= list_item.list_id \
+                JOIN item ON list_item.code = item.code \
+                WHERE guest_list.id = ?";
+                const results = await db.query(sql, [this.id]);
+                this.items=results;
+                console.log(results);
+                // for(var row of results) {
+                //     this.items.push(new Item(row.code, row.name));
+                // }
+            // }
     }
     
 }

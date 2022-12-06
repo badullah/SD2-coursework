@@ -3,11 +3,10 @@ block content
     h1 Guest page for: #{guest.name}
     p Guest ID: #{guest.id} 
     p List Name: #{guest.list.lName}
-    //- h2 Items 
-    //- table(border=1)
-    //-     for item in guest.items
-    //-         tr  
-    //-             td #{item.code}
-    //-             td 
-    //-                 a(href='/single-item/' + item.code) #{item.iName}
+    h2 List Items 
+    table(border=1)
+        for item in guest.items 
+            tr  
+                td #{item.id}
+                td #{item.item_name}
     

@@ -77,7 +77,7 @@ app.get("/guest-single/:id", async function (req, res) {
     var guest = new Guest(gtId);
     await guest.getGuestName();
     await guest.getGuestList();
-    //await guest.getGuestItem();
+    await guest.getGuestItem();
     console.log(guest);
     res.render('guest', {'guest':guest});
 });
@@ -114,19 +114,6 @@ app.get("/programme-single/:id", async function (req, res) {
     res.send(JSON.stringify(results) + JSON.stringify(modResults));  
 });
 
-
-// Create a route for testing the db
-app.get("/db_test", function(req, res) {
-    // Assumes a table called test_table exists in your database
-    var sql = 'select * from test_table';
-    // As we are not inside an async function we cannot use await
-    // So we use .then syntax to ensure that we wait until the 
-    // promise returned by the async function is resolved before we proceed
-    db.query(sql).then(results => {
-        console.log(results);
-        res.json(results)
-    });
-});
 
 
 // Start server on port 3000
