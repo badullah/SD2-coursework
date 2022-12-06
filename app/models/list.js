@@ -1,7 +1,7 @@
 // Get the functions in the db.js file to use
 const db = require('./../services/db');
 
-class list {
+class List {
     // guest ID
     id;
     // list id
@@ -21,5 +21,5 @@ class list {
 }
 
 module.exports = {
-    list
+    List
 }

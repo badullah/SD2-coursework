@@ -7,6 +7,9 @@ var app = express();
 // Add static files location
 app.use(express.static("static"));
 
+// Get the functions in the db.js file to use
+const db = require('./services/db');
+
 // Get the models
 const { Student } = require("./models/student");
 const { Guest } = require("./models/guest");
@@ -15,8 +18,6 @@ const { Guest } = require("./models/guest");
 app.set('view engine', 'pug');
 app.set('views', './app/views');
 
-// Get the functions in the db.js file to use
-const db = require('./services/db');
 
 // Create a route for root - /
 app.get("/", function(req, res) {
@@ -64,7 +65,7 @@ app.get("/student-single/:id", async function (req, res) {
     var student = new Student(stId);
     await student.getStudentName();
     await student.getStudentProgramme();
-    await student.getStudentModules();
+    //await student.getStudentModules();
     console.log(student);
     res.render('student', {'student':student});
 });
@@ -76,6 +77,7 @@ app.get("/guest-single/:id", async function (req, res) {
     var guest = new Guest(gtId);
     await guest.getGuestName();
     await guest.getGuestList();
+    //await guest.getGuestItem();
     console.log(guest);
     res.render('guest', {'guest':guest});
 });
