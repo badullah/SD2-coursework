@@ -6,6 +6,7 @@ var app = express();
 
 // Add static files location
 app.use(express.static("static"));
+app.use('/bootstrap', express.static('node_modules/bootstrap/dist'));
 
 // Get the functions in the db.js file to use
 const db = require('./services/db');
