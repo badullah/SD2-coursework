@@ -1,0 +1,27 @@
+extends layout
+block content
+    style.
+        //- h1 {text-align:center;}
+        //- table.ui.celled img { display: inline-block; }
+        table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+        footer { margin: 35px 0 15px 0; text-align: left }
+    h1 User page for: #{user.name}
+    p User ID: #{user.id}
+    p
+    h2 List Name: #{user.Ulist.UlName}
+    p
+    p List Items
+    //- table.ui.celled.table.center.aligned
+    table
+        tr
+        th Item Code
+        th Item Name
+        tr
+        for item in user.items 
+            tr  
+                td #{item.id}
+                td #{item.item_name}
+    
