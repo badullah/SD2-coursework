@@ -11,6 +11,8 @@ class Guest {
     list;
     // list item
     items = [];
+    // Guest Choice
+    choice;
 
     constructor(id) {
         this.id = id;
@@ -40,14 +42,23 @@ class Guest {
      }
     // Gets the list item for this guest
     async getGuestItem() {
-        var sql= "Select item.code as id, item.item_name from guest_list \
+        var sql= "Select item.code as id, item.item_name, list_item.status from guest_list \
         JOIN list_item ON guest_list.list_id= list_item.list_id \
         JOIN item ON list_item.code = item.code \
         WHERE guest_list.id = ?";
         const results = await db.query(sql, [this.id]);
         this.items=results;
+        this.choice=results[0].choice;
         console.log(results);
                 
+    }
+
+    async addGuestChoice(choice) {
+        var sql = "UPDATE list_item SET status = 'chosen' WHERE list_item.code = ?"
+        const result = await db.query(sql, [choice, this.id]);
+        // Ensure the note property in the model is up to date
+        this.choice = choice;
+        return result;
     }
     
 }

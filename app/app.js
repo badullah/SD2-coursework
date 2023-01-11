@@ -8,6 +8,8 @@ var app = express();
 app.use(express.static("static"));
 app.use('/bootstrap', express.static('node_modules/bootstrap/dist'));
 
+app.use(express.urlencoded({ extended: true }));
+
 // Get the functions in the db.js file to use
 const db = require('./services/db');
 
@@ -64,6 +66,22 @@ app.get("/user-single/:id", async function (req, res) {
     await user.getUserItem();
     console.log(user);
     res.render('user', {'user':user});
+});
+
+app.post('/add-choice', async function (req, res) {
+    params = req.body;
+    // Adding a try/catch block which will be useful later when we add to the database
+    var guest = new Guest(params.id);
+    try {
+         await guest.addGuestChoice(params.choice);
+         res.redirect('/guest-single/' + params.id);
+        }
+     catch (err) {
+         console.error(`Error while adding choice `, err.message);
+     }
+    //  // Just a little output for now
+    //  res.send('Choice submitted');
+
 });
 
 

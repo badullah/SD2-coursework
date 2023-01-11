@@ -19,9 +19,21 @@ block content
         tr
         th Item Code
         th Item Name
+        th Status
         tr
         for item in guest.items 
             tr  
                 td #{item.id}
                 td #{item.item_name}
+                td #{item.status}
+    p 
+    b Insert the code of your chosen item
+    p 
+    form(action='/add-choice', method='POST')
+        input(type='hidden' name='id' value=guest.id)
+        textarea(name='choice' rows=3 cols=10)
+        div 
+        p 
+        input(type='submit' value='Submit')
+
     

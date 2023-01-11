@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Dec 07, 2022 at 03:52 PM
+-- Generation Time: Jan 11, 2023 at 11:55 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.19
 
@@ -165,38 +165,39 @@ INSERT INTO `list` (`list_id`, `name`, `type`, `password`) VALUES
 CREATE TABLE `list_item` (
   `id` int DEFAULT NULL,
   `list_id` int DEFAULT NULL,
-  `code` int DEFAULT NULL
+  `code` int DEFAULT NULL,
+  `status` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `list_item`
 --
 
-INSERT INTO `list_item` (`id`, `list_id`, `code`) VALUES
-(1, 1, 22),
-(2, 1, 23),
-(3, 1, 24),
-(4, 1, 25),
-(5, 1, 26),
-(6, 2, 1),
-(7, 2, 2),
-(8, 2, 3),
-(9, 2, 4),
-(10, 2, 5),
-(11, 2, 6),
-(12, 2, 7),
-(13, 2, 8),
-(14, 2, 9),
-(15, 2, 10),
-(16, 3, 12),
-(17, 3, 13),
-(18, 3, 14),
-(19, 3, 15),
-(20, 3, 16),
-(21, 3, 17),
-(22, 3, 18),
-(23, 3, 19),
-(24, 3, 20);
+INSERT INTO `list_item` (`id`, `list_id`, `code`, `status`) VALUES
+(1, 1, 22, NULL),
+(2, 1, 23, NULL),
+(3, 1, 24, NULL),
+(4, 1, 25, NULL),
+(5, 1, 26, NULL),
+(6, 2, 1, NULL),
+(7, 2, 2, NULL),
+(8, 2, 3, NULL),
+(9, 2, 4, NULL),
+(10, 2, 5, NULL),
+(11, 2, 6, NULL),
+(12, 2, 7, NULL),
+(13, 2, 8, NULL),
+(14, 2, 9, NULL),
+(15, 2, 10, NULL),
+(16, 3, 12, NULL),
+(17, 3, 13, NULL),
+(18, 3, 14, NULL),
+(19, 3, 15, NULL),
+(20, 3, 16, NULL),
+(21, 3, 17, NULL),
+(22, 3, 18, NULL),
+(23, 3, 19, NULL),
+(24, 3, 20, NULL);
 
 -- --------------------------------------------------------
 
@@ -215,11 +216,29 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`) VALUES
-(1, 'Ana', 'ana@email.com'),
-(2, 'Billy', 'billy@email.com'),
-(3, 'Charlie', 'charlie@email.com'),
-(4, 'Diana', 'diana@email.com'),
-(5, 'Eliana', 'eliana@email.com');
+(1, 'Saad', 'saad@email.com'),
+(2, 'Julia', 'julia_eventplanner@email.com'),
+(3, 'Sarah', 'sarah@email.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_list`
+--
+
+CREATE TABLE `user_list` (
+  `id` int DEFAULT NULL,
+  `list_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `user_list`
+--
+
+INSERT INTO `user_list` (`id`, `list_id`) VALUES
+(1, 1),
+(2, 2),
+(3, 3);
 
 --
 -- Indexes for dumped tables
