@@ -70,17 +70,15 @@ app.get("/user-single/:id", async function (req, res) {
 
 app.post('/add-choice', async function (req, res) {
     params = req.body;
-    // Adding a try/catch block which will be useful later when we add to the database
     var guest = new Guest(params.id);
     try {
          await guest.addGuestChoice(params.choice);
-         res.redirect('/guest-single/' + params.id);
+         res.send('form submitted');
         }
      catch (err) {
          console.error(`Error while adding choice `, err.message);
      }
-    //  // Just a little output for now
-    //  res.send('Choice submitted');
+     res.redirect('/guest-single/' + params.id);
 
 });
 

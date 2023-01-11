@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Jan 11, 2023 at 11:55 AM
+-- Generation Time: Jan 11, 2023 at 04:02 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.19
 
@@ -166,7 +166,7 @@ CREATE TABLE `list_item` (
   `id` int DEFAULT NULL,
   `list_id` int DEFAULT NULL,
   `code` int DEFAULT NULL,
-  `status` text
+  `status` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --

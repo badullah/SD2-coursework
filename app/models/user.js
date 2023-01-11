@@ -1,7 +1,6 @@
 // Get the functions in the db.js file to use
 const db = require('./../services/db');
 const { UList } = require('./ulist');
-// const { Item } = require('./item');
 
 class User {
     // user ID

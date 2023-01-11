@@ -7,6 +7,7 @@ class List {
     // list id
     lName;
     
+    
     constructor(id) {
         this.id = id;
     }
@@ -18,6 +19,7 @@ class List {
             this.lName = results[0].name;
         }
     } 
+
 }
 
 module.exports = {

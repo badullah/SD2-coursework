@@ -24,6 +24,7 @@ class Guest {
             var sql = "SELECT * from guest where id = ?"
             const results = await db.query(sql, [this.id]);
             this.name = results[0].name;
+            this.choice = results[0].choice;
         }
 
     }
@@ -54,9 +55,8 @@ class Guest {
     }
 
     async addGuestChoice(choice) {
-        var sql = "UPDATE list_item SET status = 'chosen' WHERE list_item.code = ?"
-        const result = await db.query(sql, [choice, this.id]);
-        // Ensure the note property in the model is up to date
+        var sql = "UPDATE list_item SET status = 'chosen' WHERE code = choice"
+        const result = await db.query(sql, [choice]);
         this.choice = choice;
         return result;
     }
