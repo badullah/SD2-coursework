@@ -13,6 +13,8 @@ class Guest {
     items = [];
     // Guest Choice
     choice;
+    //Guest to be deleted choice
+    choice1;
 
     constructor(id) {
         this.id = id;
@@ -55,9 +57,22 @@ class Guest {
     }
 
     async addGuestChoice(choice) {
-        var sql = "UPDATE list_item SET status = 'chosen' WHERE code = choice"
+
+        // var status_value="chosen";
+        // var sql1 = "UPDATE list_item SET status = '' WHERE status = ?"
+        // const result1 = await db.query(sql1, [status_value]);
+
+        var sql = "UPDATE list_item SET status = 'chosen' WHERE code = ?"
         const result = await db.query(sql, [choice]);
         this.choice = choice;
+        return result;
+    }
+
+    async addGuestChoice1(choice1) {
+
+        var sql = "UPDATE list_item SET status = '' WHERE code = ?"
+        const result = await db.query(sql, [choice1]);
+        this.choice1 = choice1;
         return result;
     }
     

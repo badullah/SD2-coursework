@@ -73,7 +73,19 @@ app.post('/add-choice', async function (req, res) {
     var guest = new Guest(params.id);
     try {
          await guest.addGuestChoice(params.choice);
-         res.send('form submitted');
+        }
+     catch (err) {
+         console.error(`Error while adding choice `, err.message);
+     }
+     res.redirect('/guest-single/' + params.id);
+
+});
+
+app.post('/delete-choice1', async function (req, res) {
+    params = req.body;
+    var guest = new Guest(params.id);
+    try {
+         await guest.addGuestChoice1(params.choice1);
         }
      catch (err) {
          console.error(`Error while adding choice `, err.message);

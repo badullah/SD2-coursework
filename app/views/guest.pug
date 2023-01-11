@@ -35,4 +35,14 @@ block content
         div 
         p 
         input(type='submit' value='Submit')
+    p 
+    b To delete your choice please submit the item code below
+    p 
+    form(action='/delete-choice1', method='POST')
+        input(type='hidden' name='id' value=guest.id)
+        textarea(name='choice1' rows=3 cols=10)
+        div 
+        p 
+        input(type='submit' value='Submit')
+
     
